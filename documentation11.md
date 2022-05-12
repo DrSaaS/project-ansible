@@ -65,7 +65,7 @@ Next, I got the password from /var/lib/jenkins/secrets/initialAdminPassword and 
 
 
 
-![Jenkins browser](./images/unlock-jenkins.JPG)    
+![Jenkins browser](./images/unlock-jenkins2.JPG)    
 
 
 ```
@@ -74,7 +74,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 The next step was to customize Jenkins. I selected the Install suggested plugins option  
 
-![Jenkins plugins](./images/jenkins-plugins.JPG)  
+![Jenkins plugins](./images/jenkins-plugins2.JPG)  
 
 ---
 ## The next step was to configure Jenkins to retrieve source codes from GitHub using Webhooks
@@ -129,3 +129,6 @@ ls /var/lib/jenkins/jobs/ansible/builds/4/archive/
 
 
 ### The artifacts were successfully stored on the  Jenkins server  
+
+### end of jenkins configuration
+
