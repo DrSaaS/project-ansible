@@ -114,5 +114,18 @@ The next step was to customize Jenkins. I selected the Install suggested plugins
 
 ![Jenkins build](./images/archive-artifacts.JPG)
 
-### The next step was to push changes from VS Code to Github and see if the build was triggered by the webhook
+### The next step was to push changes from VS Code to Github and see if build #4 will be triggered by the webhook
 
+![Jenkins build](./images/updated-code.JPG)
+
+![Jenkins build](./images/build4.JPG)
+
+### I proceeded to check if the artifacts of build #4 were stored on the jenkins server at /var/lib/jenkins/jobs/ansible/builds/4/archive/
+
+```
+ls /var/lib/jenkins/jobs/ansible/builds/4/archive/
+```
+![Jenkins build](./images/artifacts.JPG)  
+
+
+### The artifacts were successfully stored on the  Jenkins server  
