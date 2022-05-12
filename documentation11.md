@@ -114,4 +114,5 @@ The next step was to customize Jenkins. I selected the Install suggested plugins
 
 ![Jenkins build](./images/archive-artifacts.JPG)
 
+### The next step was to push changes from VS Code to Github and see if the build was triggered by the webhook
 
