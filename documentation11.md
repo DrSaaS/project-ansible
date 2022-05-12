@@ -65,7 +65,7 @@ Next, I got the password from /var/lib/jenkins/secrets/initialAdminPassword and 
 
 
 
-![Jenkins browser](./images/unlock-jenkins.PNG)    
+![Jenkins browser](./images/unlock-jenkins.JPG)    
 
 
 ```
@@ -74,7 +74,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 The next step was to customize Jenkins. I selected the Install suggested plugins option  
 
-![Jenkins plugins](./images/jenkins-plugins.PNG)  
+![Jenkins plugins](./images/jenkins-plugins.JPG)  
 
 ---
 ## The next step was to configure Jenkins to retrieve source codes from GitHub using Webhooks
