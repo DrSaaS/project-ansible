@@ -17,7 +17,7 @@
 
 
 ---
-## Then I installed and configured Jenkins on the Jenkins-Ansible server
+## Then I installed and configured Ansible and Jenkins on the Jenkins-Ansible server
 ---
 
 #### Update the jenkins server 
@@ -72,7 +72,31 @@ Next, I got the password from /var/lib/jenkins/secrets/initialAdminPassword and 
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
-The next step was to customize Jenkins. I selected the Install suggested plugins option  
+---
+## Install and configure Ansible on the Ansible-Jenkins Instance/Server
+---
+
+```
+sudo apt update
+sudo apt install ansible -y
+```
+
+### Check ansible version  
+```
+ansible --version
+```
+
+![Ansible version](./images/ansible-version.JPG)  
+
+
+
+
+
+
+
+## The next step was to customize Jenkins. I selected the Install suggested plugins option  
+---  
+
 
 ![Jenkins plugins](./images/jenkins-plugins2.JPG)  
 
@@ -131,6 +155,103 @@ ls /var/lib/jenkins/jobs/ansible/builds/4/archive/
 ### The artifacts were successfully stored on the  Jenkins server  
 
 ### end of jenkins configuration  
+
+##Next is to create a new branch testbranch  to our repository 
+
+```
+git branch
+
+git status
+
+git checkout -b testbranch
+```
+
+### I created the directory structure aand files 
+playbooks
+ - common.yml
+inventory
+ - dev.yml   
+ - staging.yml   
+ - uat.yml  
+ - prod.yml  
+
+```
+mkdir playbooks && touch playbooks/common.yml
+
+mkdir inventory && touch inventory/dev.yml inventory/staging.yml inventory/uat.yml inventory/prod.yml
+```
+
+### I updated the inventory/dev.yml file with the code snippet below
+```
+[nfs]
+172.31.2.41 ansible_ssh_user='ec2-user'
+
+[webservers]
+172.31.12.97 ansible_ssh_user='ec2-user'
+172.31.6.178 ansible_ssh_user='ec2-user'
+
+[db]
+172.31.15.148 ansible_ssh_user='ec2-user' 
+
+[lb]
+172.31.9.227 ansible_ssh_user='ubuntu'
+```
+
+The next step was to set up ssh agent
+
+```
+eval `ssh-agent -s`
+
+```
+ssh-add path-to-private-key
+```
+ssh-add PBL.pem
+```
+### ssh -A ubuntu@ instance-public-ip-addess
+```
+ssh -A ubuntu@18.132.200.175
+```
+### persist key on server
+
+```
+ssh-add -l
+```
+![persist key](./images/persist-key.JPG)
+
+
+## In playbooks/common.yml playbook,  I updated it with the following code containing the configuration for repeatable, re-usable, and multi-machine tasks that is common to systems within the infrastructure.
+
+
+
+```
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs, db
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+    - name: ensure wireshark is at the latest version
+      yum:
+        name: wireshark
+        state: latest
+
+- name: update LB server
+  hosts: lb
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+    - name: Update apt repo
+      apt: 
+        update_cache: yes
+
+    - name: ensure wireshark is at the latest version
+      apt:
+        name: wireshark
+        state: latest
+
+        ```
 
 
 
