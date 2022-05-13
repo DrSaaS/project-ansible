@@ -132,7 +132,6 @@ ls /var/lib/jenkins/jobs/ansible/builds/4/archive/
 
 ### end of jenkins configuration  
 
----
-# Configure Jenkins to copy files to the NFS server
----
+
+
 
