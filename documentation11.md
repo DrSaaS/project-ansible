@@ -130,5 +130,9 @@ ls /var/lib/jenkins/jobs/ansible/builds/4/archive/
 
 ### The artifacts were successfully stored on the  Jenkins server  
 
-### end of jenkins configuration
+### end of jenkins configuration  
+
+---
+# Configure Jenkins to copy files to the NFS server
+---
 
