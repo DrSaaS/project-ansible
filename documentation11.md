@@ -251,8 +251,61 @@ ssh-add -l
         name: wireshark
         state: latest
 
-        ```
+```
+
+### Next step was to push all changes in branch testbranch to the githup repository
+
+```
+git add .
+
+git commit -m "updated playbook and inventory files"
+
+git push origin testbranch
+```
+### Next I created a pull request on github
+
+![pull request](./images/create-pull-request.JPG)  
+
+### I merged the changes in testbranch to main
+
+![merged branches](./images/merge-pull-request.JPG) 
+
+Then I closed the pull request after merging
+
+![merged branches](./images/merged-and-closed.JPG) 
+
+### I proceeded to check that the build was automatically triggered in Jenkins  
+
+![merged branches](./images/merge-files-jenkins.JPG) 
+
+### I also checked that jenkins had saved the artifacts on the server (build #10)
+### at /var/lib/jenkins/jobs/ansible/builds/10/archive/
+
+```
+ls /var/lib/jenkins/jobs/ansible/builds/10/archive/
+
+```
 
 
+![artifacts10](./images/archived-artifacts10.JPG) 
+
+## Run first ansible test
+---
+
+### I connect to the host using remote SSH
+
+ssh - A ubuntu@18.132.200.175
+
+### successfully connected remotel to server
+
+### open folders on server
+
+### run playbook on build #10
+```
+ansible-playbook -i  /var/lib/jenkins/jobs/ansible/builds/10/archive/inventory/dev.yml /var/lib/jenkins/jobs/ansible/builds/10/archive/playbooks/common.yml   
+```
+
+
+![run playbook](./images/playbook-successful.JPG) 
 
 
