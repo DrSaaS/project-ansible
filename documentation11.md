@@ -292,7 +292,20 @@ ls /var/lib/jenkins/jobs/ansible/builds/10/archive/
 ## Run first ansible test
 ---
 
+### I connect to the host using remote SSH
+
+ssh - A ubuntu@18.132.200.175
+
+### successfully connected remotel to server
+
+### open folders on server
+
+### run playbook on build #10
+```
+ansible-playbook -i  /var/lib/jenkins/jobs/ansible/builds/10/archive/inventory/dev.yml /var/lib/jenkins/jobs/ansible/builds/10/archive/playbooks/common.yml   
+```
 
 
+![run playbook](./images/playbook-successful.JPG) 
 
 
