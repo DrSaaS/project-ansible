@@ -343,7 +343,7 @@ ansible-playbook -i  /var/lib/jenkins/jobs/ansible/builds/10/archive/inventory/d
         name: Africa/Lagos
 
 ```
-
+---
 
 ![webserver1](./images/ansiblesuccess.JPG)
 
