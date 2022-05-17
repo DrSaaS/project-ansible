@@ -317,3 +317,40 @@ ansible-playbook -i  /var/lib/jenkins/jobs/ansible/builds/10/archive/inventory/d
 ### Webserver 2
 
 ![webserver1](./images/wireshark2.JPG)
+
+### Next, I added new instructions to the playbook common.yml to create a directory called sample and 
+### create a file called ansible.txt
+
+### I added the code snippet below to the existing common.yml
+
+```
+- name: create directory, file ans set timezone on all servers
+  hosts: webservers, nfs, db, lb
+  become: yes
+  tasks:
+    - name: create a directory
+      file:
+        path: /home/sample
+        state: directory
+   
+    - name: create a file
+      file:
+        path: /home/sample/ansible.txt
+        state: touch
+
+    - name: change timezone
+      timezone:
+        name: Africa/Lagos
+
+```
+
+
+![webserver1](./images/ansiblesuccess.JPG)
+
+### I then checked to see if the new instructions had executed successfully and creted the folder and file
+
+![webserver1](./images/playbook-file-created.JPG)
+
+---
+# End of Project
+---
