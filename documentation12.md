@@ -42,3 +42,8 @@ ll
 - For artifacts not to copy, I entered README.md
 - Target directory was set as /home/ubuntu/ansible-config-artifact
 
+### I pushed the changes made to git to check if the setup was working correctly
+
+### I did a chmod -R 777 against /home
+
+
