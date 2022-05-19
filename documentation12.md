@@ -53,3 +53,15 @@ ll
 ![copy artifacts](./images/artifacts-1.JPG) 
 
 ![copy artifacts](./images/artifacts-2.JPG) 
+
+### Next I used git pull origin main to update the main local branch
+```
+git pull origin main
+```
+### I then created a new branch refactor and switched to it
+
+```
+git checkout -b refactor
+```
+![refactor 1](./images/refactor-1.JPG) 
+
