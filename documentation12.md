@@ -65,3 +65,45 @@ git checkout -b refactor
 ```
 ![refactor 1](./images/refactor-1.JPG) 
 
+- I created a new file site.yml in the playbook folder
+- I created a folder named static-assignments in the root folder
+- I moved playbooks/common.yml to the static-assignments folder
+- Next, I imported common.yml playbook into the site.yml file
+
+### The next step was to remove wireshark that I installed previously on all other servers
+
+- I created another playbook under static-assignments called common-del.yml to delete the wireshark utility
+```
+touch static-assignments/common-del.yml
+```
+### I posted the code below into common-del.yml
+
+```
+---
+- name: update web, nfs and db servers
+  hosts: webservers, nfs, db
+  remote_user: ec2-user
+  become: yes
+  become_user: root
+  tasks:
+  - name: delete wireshark
+    yum:
+      name: wireshark
+      state: removed
+
+- name: update LB server
+  hosts: lb
+  remote_user: ubuntu
+  become: yes
+  become_user: root
+  tasks:
+  - name: delete wireshark
+    apt:
+      name: wireshark-qt
+      state: absent
+      autoremove: yes
+      purge: yes
+      autoclean: yes
+```
+
+
