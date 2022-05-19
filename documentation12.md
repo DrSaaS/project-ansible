@@ -44,6 +44,12 @@ ll
 
 ### I pushed the changes made to git to check if the setup was working correctly
 
+### The save artifacts build faled with the error  below
+
+![copy artifacts](./images/artifacts-error.JPG)
+
 ### I did a chmod -R 777 against /home
 
+![copy artifacts](./images/artifacts-1.JPG) 
 
+![copy artifacts](./images/artifacts-2.JPG) 
